@@ -1,0 +1,23 @@
+#contextItem and language is passed by sitecore itself
+query BreadCrumb($contextItem: String!, $language: String!) {
+  item(path: $contextItem, language: $language) {
+    ancestors(
+      hasLayout: true
+      #Template ids to be included in breadcrumb
+      includeTemplateIDs: [
+        "{A87A00B1-E6DB-45AB-8B54-636FEC3B5523}"
+        "{F527F595-CDCD-5AF7-821F-00F95A9589D6}"
+        "{49B066AF-1BEA-5FC4-B7A5-7A117F8221A1}"
+      ]
+    ) {
+      ... on MetaBase {
+        title {
+          value
+        }
+      }
+      url{
+        path
+      }
+    }
+  }
+}
