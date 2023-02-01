@@ -4,15 +4,18 @@ import { useHistory } from 'react-router-dom';
 
 const SideMenu = (props) => {
   const history = useHistory();
+  if (history.location.pathname.match('/.*/$')) {
+    history.location.pathname = history.location.pathname.replace(/\/+$/, '');
+  }
   let urlElements = history.location.pathname.split('/');
-  let currentUrlLastPart = urlElements[1].split('?')[0];
+  let currentUrlLastPart = urlElements[urlElements.length - 1].split('?')[0];
   let itemUrlParts = '';
   let itemUrlLastPart = '';
   let activeFlag = '';
   return (
     <div>
       {props.fields.data.datasource && (
-        <Nav defaultActiveKey="/" className="flex-column">
+        <Nav className="flex-column">
           <b>{props.fields.data.datasource.sectionTitle.value}</b>
           {props.fields.data.datasource.sideMenuItems.targetItems &&
             props.fields.data.datasource.sideMenuItems.targetItems.map((item, index) => {
