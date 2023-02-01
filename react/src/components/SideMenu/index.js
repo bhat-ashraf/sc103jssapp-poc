@@ -1,29 +1,34 @@
 import React from 'react';
-import { Text } from '@sitecore-jss/sitecore-jss-react';
 import Nav from 'react-bootstrap/Nav';
+import { useHistory } from 'react-router-dom';
 
-class SideMenu extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    console.log(this.props);
-    return (
-      <div>
-        {this.props.fields.data.datasource && (
-          <Nav defaultActiveKey="/" className="flex-column">
-            {this.props.fields.data.datasource.sideMenuItems.targetItems &&
-              this.props.fields.data.datasource.sideMenuItems.targetItems.map((item, index) => (
-                <Nav.Link eventKey={index} activeClassName="active" key={index} href={item.url.url}>
+const SideMenu = (props) => {
+  const history = useHistory();
+  let urlElements = history.location.pathname.split('/');
+  let currentUrlLastPart = urlElements[1].split('?')[0];
+  let itemUrlParts = '';
+  let itemUrlLastPart = '';
+  let activeFlag = '';
+  return (
+    <div>
+      {props.fields.data.datasource && (
+        <Nav defaultActiveKey="/" className="flex-column">
+          <b>{props.fields.data.datasource.sectionTitle.value}</b>
+          {props.fields.data.datasource.sideMenuItems.targetItems &&
+            props.fields.data.datasource.sideMenuItems.targetItems.map((item, index) => {
+              itemUrlParts = item.url.url.split('/');
+              itemUrlLastPart = itemUrlParts[itemUrlParts.length - 1];
+              activeFlag = itemUrlLastPart === currentUrlLastPart ? true : '';
+              return (
+                <Nav.Link eventKey={index} key={index} disabled={activeFlag} href={item.url.url}>
                   <b>{item.title && item.title.value}</b>
                 </Nav.Link>
-              ))}
-          </Nav>
-        )}
-      </div>
-    );
-  }
-}
+              );
+            })}
+        </Nav>
+      )}
+    </div>
+  );
+};
 
 export default SideMenu;

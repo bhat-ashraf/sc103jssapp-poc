@@ -1,0 +1,25 @@
+#datasource and language is passed by sitecore itself
+query SideMenu($datasource: String!, $language: String!) {
+  datasource: item(language: $language, path: $datasource) {
+    ... on SideMenuSettings {
+      sectionTitle{
+        value
+      }
+      sideMenuItems {
+        targetItems {
+          url {
+            url
+          }
+          ... on MetaBase {
+            title {
+              value
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
