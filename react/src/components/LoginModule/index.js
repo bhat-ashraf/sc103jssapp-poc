@@ -19,9 +19,6 @@ const LoginModule = (props) => {
   const history = useHistory();
 
   const MatchUser = () => {
-    console.log('isPageData', isPageData);
-    console.log('email', email);
-
     // isuser exist
     isPageData.getuserdetails.map((user, index) => {
       if (user.email === email || user.password === password) {
@@ -29,8 +26,8 @@ const LoginModule = (props) => {
           username: user.firstName + ' ' + user.lastName,
           isSuperUser: user.isSuperUser,
         };
-        localStorage.setItem('user', loggedInUser);
-        history.push('/');
+        localStorage.setItem('user', JSON.stringify(loggedInUser));
+        history.push('/your-orders');
       }
     });
   };
