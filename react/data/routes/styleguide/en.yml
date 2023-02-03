@@ -2,6 +2,7 @@ fields:
   pageTitle: Styleguide | Sitecore JSS
 placeholders:
   jss-main:
+  - componentName: SideMenu
   - componentName: ContentBlock
     fields:
       heading: JSS Styleguide

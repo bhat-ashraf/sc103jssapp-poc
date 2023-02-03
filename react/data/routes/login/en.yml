@@ -1,0 +1,11 @@
+id: login-page
+
+fields:
+  pageTitle: Welcome to Sitecore JSS
+
+placeholders:
+  jss-main:
+    - componentName: LoginModule
+      fields:
+        heading: Welcome to Sitecore JSS
+        

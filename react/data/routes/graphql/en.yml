@@ -2,6 +2,7 @@ fields:
   pageTitle: GraphQL | Sitecore JSS
 placeholders:
   jss-main:
+  - componentName: SideMenu
   - componentName: ContentBlock
     fields:
       heading: Using GraphQL with JSS
