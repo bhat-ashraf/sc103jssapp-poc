@@ -22,6 +22,10 @@ placeholders:
   jss-main:
     - componentName: LoginModule
     
+    - componentName: PocBreadcrumb
+
+    - componentName: SideMenu
+
     - componentName: ContentBlock
       fields:
         heading: Welcome to Sitecore JSS
