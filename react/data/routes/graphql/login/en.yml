@@ -10,7 +10,7 @@
 
 # Setting an ID is optional, but it will allow referring to this item in internal links
 # the ID can be a app-wide-unique string, or a GUID value.
-id: home-page
+id: login-page
 
 # Route-level fields are appropriate for page level data like <title> contents
 # Define route level fields in /sitecore/definitions/routes.sitecore
@@ -22,10 +22,6 @@ placeholders:
   jss-main:
     - componentName: LoginModule
     
-    - componentName: PocBreadcrumb
-
-    - componentName: SideMenu
-
     - componentName: ContentBlock
       fields:
         heading: Welcome to Sitecore JSS
